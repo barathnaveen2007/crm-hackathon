@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRM Hackathon Project</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Customer Relationship Management (CRM)</h1>
+
+<form action="/add" method="POST">
+    <input type="text" name="name" placeholder="Customer Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="phone" placeholder="Phone" required>
+    <input type="text" name="company" placeholder="Company" required>
+    <button type="submit">Add Customer</button>
+</form>
+
+<h2>Customer List</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Company</th>
+        <th>Action</th>
+    </tr>
+
+    {% for customer in customers %}
+    <tr>
+        <td>{{ customer[1] }}</td>
+        <td>{{ customer[2] }}</td>
+        <td>{{ customer[3] }}</td>
+        <td>{{ customer[4] }}</td>
+        <td><a href="/delete/{{ customer[0] }}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
